@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+regex.h
+-
+structures.h
+/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/structures.h
+
+/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/structures.h
+

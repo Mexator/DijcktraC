@@ -269,6 +269,7 @@ inline void relax(dijkstra_node *node, dijkstra_node *prev, int weight)
     {
         if (prev->mark + weight == node->mark)
         {
+            node->prev[node->prev_num] = malloc(sizeof(dijkstra_node));
             node->prev[node->prev_num] = prev;
             node->prev_num++;
         }

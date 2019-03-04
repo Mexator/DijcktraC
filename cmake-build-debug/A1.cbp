@@ -84,9 +84,6 @@
 		<Unit filename="/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/structures.h">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/tst.c">
-			<Option target="A1"/>
-		</Unit>
 		<Unit filename="/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

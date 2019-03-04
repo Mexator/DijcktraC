@@ -4,5 +4,3 @@
 CMakeFiles/A1.dir/main.c.o: ../main.c
 CMakeFiles/A1.dir/main.c.o: ../structures.h
 
-CMakeFiles/A1.dir/tst.c.o: ../tst.c
-

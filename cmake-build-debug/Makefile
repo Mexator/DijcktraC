@@ -150,33 +150,6 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/main.c.s
 .PHONY : main.c.s
 
-tst.o: tst.c.o
-
-.PHONY : tst.o
-
-# target to build an object file
-tst.c.o:
-	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/tst.c.o
-.PHONY : tst.c.o
-
-tst.i: tst.c.i
-
-.PHONY : tst.i
-
-# target to preprocess a source file
-tst.c.i:
-	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/tst.c.i
-.PHONY : tst.c.i
-
-tst.s: tst.c.s
-
-.PHONY : tst.s
-
-# target to generate assembly for a file
-tst.c.s:
-	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/tst.c.s
-.PHONY : tst.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +162,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... tst.o"
-	@echo "... tst.i"
-	@echo "... tst.s"
 .PHONY : help
 
 

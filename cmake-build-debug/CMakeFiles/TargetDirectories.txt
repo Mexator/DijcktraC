@@ -1,3 +1,0 @@
-/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/cmake-build-debug/CMakeFiles/A1.dir
-/home/anton/OneDrive/Projects/Study/S19/ITP/Assignments/A1/cmake-build-debug/CMakeFiles/edit_cache.dir

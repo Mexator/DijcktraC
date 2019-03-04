@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <regex.h>
 #include "structures.h"
 
 #define MAX_FIRST_STRING 1024

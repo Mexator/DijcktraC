@@ -48,7 +48,7 @@ int main()
 
     produce_output(output_file, last_node, graph.initial_city, error);
 
-    free_graph_info(&graph);
+    if(!error)free_graph_info(&graph);
 }
 
 /**
@@ -64,7 +64,7 @@ enum messages do_input(FILE *source, graph_info *dest)
     //minus sign is allowed
     //no leading zeros allowed
     //any length of number
-    char number_template[] = "-?(0|[1-9]\\d*)";
+    char number_template[] = "-?(0|([1-9]\\d*))";
     char end_of_line[] = "[\n^ ]$";
     //First string
     //Creating regex for 1st string

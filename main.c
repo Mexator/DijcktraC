@@ -19,7 +19,6 @@ enum messages search_ways(graph_info graph, dijkstra_node *output);
 
 void produce_output(FILE *out, dijkstra_node node, int initial_city, enum messages error);
 
-void free_graph_info(graph_info *g);
 
 int main()
 {
@@ -48,7 +47,6 @@ int main()
 
     produce_output(output_file, last_node, graph.initial_city, error);
 
-    free_graph_info(&graph);
 }
 
 /**
@@ -65,15 +63,15 @@ enum messages do_input(FILE *source, graph_info *dest)
     //no leading zeros allowed
     //any length of number
     char number_template[] = "-?(0|[1-9]\\d*)";
-    char end_of_line[] = "[\n^ ]$";
+    char end_of_line[] = "[\n]$";
     //First string
     //Creating regex for 1st string
     regex_t first_string;
-    char *first_template = malloc((strlen(number_template) + 1) * 3 + 1);
+    char *first_template = malloc(strlen(number_template)*2 + 8);
     if (first_template == NULL)
         return internal_error;
     first_template[0] = '\0';
-    sprintf(first_template, "%s %s %s\n", number_template, number_template, number_template);
+    sprintf(first_template, "(%s ){2}%s\n", number_template,number_template);
     if (regcomp(&first_string, first_template, REG_EXTENDED) != 0)
     {
         return internal_error;
@@ -129,15 +127,15 @@ enum messages do_input(FILE *source, graph_info *dest)
     strcat(number_or_star, number_template);
     strcat(number_or_star, "|\\*)");
 
-    char *matrix_str_template = malloc(dest->cities_number * (strlen(number_or_star) + 1) + strlen(end_of_line));
-    matrix_str_template[0] = '\0';
-    strcat(matrix_str_template, number_or_star);
-    for (int i = 0; i < dest->cities_number - 1; ++i)
-    {
-        strcat(matrix_str_template, " ");
-        strcat(matrix_str_template, number_or_star);
-    }
-    strcat(matrix_str_template, end_of_line);
+    char *repetitions = malloc(MAX_NUMBER_LENGTH + 2);
+    repetitions[0]='\0';
+    strcpy(repetitions," ){");
+    sprintf(repetitions, "%s%d}", repetitions, dest->cities_number - 1);
+
+    char *matrix_str_template = malloc(strlen(number_or_star)*2 + strlen(repetitions) + strlen(end_of_line) + 2);
+    matrix_str_template[0]='\0';
+    sprintf(matrix_str_template,"(%s%s%s%s",number_or_star,repetitions,number_or_star,end_of_line);
+
     if (regcomp(&matrix_string, matrix_str_template, REG_EXTENDED))
         return internal_error;
     free(matrix_str_template);
@@ -252,6 +250,7 @@ enum messages search_ways(graph_info graph, dijkstra_node *output)
         return success;
     }
 }
+
 /**
  * Does relaxation for node {node}
  * @param node The node to be relaxed
@@ -275,6 +274,7 @@ inline void relax(dijkstra_node *node, dijkstra_node *prev, int weight)
         }
     }
 }
+
 /**
  * Produces array of strings each of that is
  * shortest way from initial node to destination one
@@ -315,6 +315,7 @@ char **backtracking(int initial_city, dijkstra_node end, int *number)
     }
     return output_array;
 }
+
 /**
  * Prints output to {out}
  * @param out The file where to print all outputs
@@ -366,13 +367,4 @@ void produce_output(FILE *out, dijkstra_node node, int initial_city, enum messag
             fprintf(out, "Unknown error\n");
             break;
     }
-}
-
-void free_graph_info(graph_info *g)
-{
-    for (int i = 0; i < g->cities_number; ++i)
-    {
-        free(g->ways[i]);
-    }
-    free(g->ways);
 }
